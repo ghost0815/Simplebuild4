@@ -1144,10 +1144,10 @@ def run_job(job_name: str, paths, settings, log: Optional[Callable[[str], None]]
                 )
                 if ok:
                     # Re-scan the sysroot so we record the *actual*
-                    # version reported by the .pc file (recipe variants
-                    # like libdvbcsa's "auto" are selectors, not real
-                    # versions — auto resolves to e.g. "1.1.0-128-neon"
-                    # after the build).
+                    # version reported by the .pc file. For bitslice
+                    # families like libdvbcsa the installed variant
+                    # "1.2.0" resolves to e.g. "1.2.0-128-neon" only
+                    # after the build runs auto_bitslice.
                     actual_version = _resolve_installed_version(
                         tc_dir, tc.sysroot, lib_name, tc.native,
                         fallback=version_to_build,

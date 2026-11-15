@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import os
 import platform
+import re
 import shutil
 import socket
 import subprocess
@@ -681,33 +682,43 @@ def check_library_updates(
 
         # Check if installed version matches a variant
         exact_match = False
-        has_auto = any(v.get("version") == "auto" for v in available)
+        # Bitslice families (libdvbcsa) ship forced siblings like
+        # "1.2.0-64" alongside an autodetect variant like "1.2.0";
+        # an installed .pc reports the autodetect result as
+        # "1.2.0-128-neon". Detect the family syntactically rather
+        # than via a magic "auto" selector string.
+        has_bitslice_variants = any(
+            re.match(r'^\d+\.\d+\.\d+-\d+$', v.get("version", ""))
+            for v in available
+        )
         for v in available:
             v_version = v.get("version", "")
             if v_version == lib.version:
                 exact_match = True
                 break
 
-        # For "auto" variants: installed "1.1.0-128-neon" or "1.1.0-128" matches
-        # if it starts with any variant's base version (e.g. "1.1.0-")
-        if not exact_match and has_auto and "-" in lib.version:
+        # Installed "1.2.0-128-neon" or "1.2.0-128" matches the family
+        # when any forced "1.2.0-N" variant shares its base.
+        if not exact_match and has_bitslice_variants and "-" in lib.version:
             for v in available:
                 v_version = v.get("version", "")
-                if v_version not in ("auto", "master") and "-" in v_version:
-                    variant_base = v_version.split("-")[0]  # "1.1.0-64" → "1.1.0"
+                if re.match(r'^\d+\.\d+\.\d+-\d+$', v_version):
+                    variant_base = v_version.split("-")[0]  # "1.2.0-64" → "1.2.0"
                     if lib.version.startswith(variant_base + "-"):
                         exact_match = True
                         break
 
-        # For "auto" variants: plain version like "1.1.0" (no batchsize) should
-        # recommend "auto" to get proper bitslice optimization
-        if not exact_match and has_auto and "-" not in lib.version:
+        # Plain base version like "1.2.0" installed (no bitslice suffix):
+        # recommend the autodetect sibling of the same family so the
+        # recipe's auto_bitslice snippet picks a proper backend.
+        if not exact_match and has_bitslice_variants and "-" not in lib.version:
             for v in available:
                 v_version = v.get("version", "")
-                if v_version not in ("auto", "master") and v_version.startswith(lib.version + "-"):
-                    # Installed "1.1.0" matches base of "1.1.0-64" → recommend auto
-                    lib.update_version = "auto"
-                    lib.latest_version = "auto"
+                if (re.match(r'^\d+\.\d+\.\d+-\d+$', v_version)
+                        and v_version.startswith(lib.version + "-")):
+                    # Installed "1.2.0" with group base "1.2.0-N" present
+                    # → recommend the autodetect variant (latest stable).
+                    lib.update_version = lib.latest_version
                     lib.up_to_date = False
                     break
             continue

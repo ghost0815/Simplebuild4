@@ -151,6 +151,7 @@ libraries:
       include_dirs: [PCSC]
     version_check: github:LudovicRousseau/PCSC
     source: https://github.com/LudovicRousseau/PCSC/archive/refs/tags/@VERSION@.tar.gz
+    archive_filename: pcsclite-@VERSION@.tar.gz
     pre_configure: "./bootstrap"
     extra:
       "post:csky": 'for f in $(find . -name config.sub); do grep -q "csky" "$f" || sed -i "s/| mcore | mep | metag /| mcore | mep | metag | csky /;s/| mcore-\* | metag-\* /| mcore-* | metag-* | csky-* /" "$f"; done'
@@ -203,6 +204,7 @@ libraries:
       extra_dirs: [lib/pcsc, etc/reader.conf.d]
     version_check: github:LudovicRousseau/CCID
     source: https://github.com/LudovicRousseau/CCID/archive/refs/tags/@VERSION@.tar.gz
+    archive_filename: ccid-@VERSION@.tar.gz
     pre_configure: "./bootstrap"
     extra:
       "post:csky": 'for f in $(find . -name config.sub); do grep -q "csky" "$f" || sed -i "s/| mcore | mep | metag /| mcore | mep | metag | csky /;s/| mcore-\* | metag-\* /| mcore-* | metag-* | csky-* /" "$f"; done'
@@ -241,8 +243,8 @@ libraries:
     removal:
       include_dirs: [dvbcsa]
     version_check: github:oe-mirrors/libdvbcsa
-    source: https://github.com/oe-mirrors/libdvbcsa/archive/refs/heads/master.zip
-    archive_filename: libdvbcsa-master.zip
+    source: https://github.com/oe-mirrors/libdvbcsa/archive/refs/tags/@VERSION@.tar.gz
+    archive_filename: libdvbcsa-@VERSION@.tar.gz
     pre_configure: "autoreconf -i"
     configure: "./configure --host=@TARGET@ --prefix=@PREFIX@ $OPTIMIZATION"
     make: "make -j@CPUS@"
@@ -268,8 +270,8 @@ libraries:
         [ -z "$OPT" ] && OPT="--enable-uint32"
         export OPTIMIZATION="$OPT"
     variants:
-      - version: "auto"
-        label: "1.2.0 (autodetect bitslice)"
+      - version: "1.2.0"
+        label: "1.x (autodetect bitslice)"
       - version: "1.2.0-64"
         label: "1.2.0 uint64 (force)"
         extra:
