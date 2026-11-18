@@ -170,7 +170,7 @@ libraries:
     install: "make install"
     depends: [libusb, zlib]
     variants:
-      - version: "2.5.3"
+      - version: "2.5.4"
         label: "2.x (current)"
         requires: "c11"
         pre_configure: ""
