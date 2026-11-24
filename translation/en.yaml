@@ -231,7 +231,7 @@ ph_enter_path: "Or enter path directly..."
 ph_tc_name: "toolchain name"
 ph_filter: "Filter..."
 ph_repo_name: "e.g. master"
-ph_repo_url: "https://git.streamboard.tv/common/oscam.git"
+ph_repo_url: "https://git.streamboard.info/common/oscam.git"
 ph_repo_branch: "(default)"
 ph_repo_switch: "(latest) - git: SHA, tag, branch  ·  svn: revision"
 

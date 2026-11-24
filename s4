@@ -76,7 +76,7 @@ if [ "$1" == "update" ]; then
         fi
     else
         # --- No git repo: clone to temp, copy files over (like s3) ---
-        S4_URL="https://git.streamboard.tv/common/simplebuild4.git"
+        S4_URL="https://git.streamboard.info/common/simplebuild4.git"
         # Try reading URL from settings
         [ -f data/settings.yaml ] && _url=$(grep 's4_url:' data/settings.yaml 2>/dev/null | awk '{print $2}') && [ -n "$_url" ] && S4_URL="$_url"
 

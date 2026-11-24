@@ -13,7 +13,7 @@ from translation import t
 DEFAULT_REPOS = [
     RepoConfig(
         name="default",
-        url="https://git.streamboard.tv/common/oscam.git",
+        url="https://git.streamboard.info/common/oscam.git",
     ),
 ]
 

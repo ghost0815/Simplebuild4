@@ -14,7 +14,7 @@ update-libraries:
     - if: $CI_PIPELINE_SOURCE == "web"
   script:
     - git config user.name "pipeline-user"
-    - git config user.email "pipeline-user@users.noreply.git.streamboard.tv"
+    - git config user.email "pipeline-user@users.noreply.git.streamboard.info"
     - git checkout ${CI_COMMIT_BRANCH}
     - python3 .gitlab/update_libraries.py
     - |

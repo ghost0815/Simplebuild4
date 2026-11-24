@@ -114,7 +114,7 @@ def _make_server(ctx: McpContext) -> Server:
     # ``None`` means the SDK omits the icons field entirely.
     server = Server(
         "simplebuild4",
-        website_url="https://git.streamboard.tv/common/simplebuild4",
+        website_url="https://git.streamboard.info/common/simplebuild4",
         icons=None,
     )
 

@@ -10,8 +10,8 @@ from mcp.types import Tool
 
 from mcp_server.context import McpContext
 
-_API_BASE = "https://git.streamboard.tv/api/v4/projects/19/wikis"
-_WEB_BASE = "https://git.streamboard.tv/common/simplebuild4/-/wikis"
+_API_BASE = "https://git.streamboard.info/api/v4/projects/19/wikis"
+_WEB_BASE = "https://git.streamboard.info/common/simplebuild4/-/wikis"
 
 
 def _fetch_json(url: str) -> Any:

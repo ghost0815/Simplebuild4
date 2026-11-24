@@ -37,7 +37,7 @@ class Settings:
     last_toolchain: str = ""       # Last selected toolchain (auto-saved)
 
     # Repository
-    s4_url: str = "https://git.streamboard.tv/common/simplebuild4.git"
+    s4_url: str = "https://git.streamboard.info/common/simplebuild4.git"
 
     # Build
     compiler_opt: str = "-O2 -ggdb -pipe -ffunction-sections -fdata-sections -fomit-frame-pointer -fno-schedule-insns"

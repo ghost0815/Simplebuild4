@@ -1,9 +1,9 @@
 # SimpleBuild4 (s4): cross-compilation build system for oscam
 
-[![GitLab Last Commit](https://img.shields.io/gitlab/last-commit/19?gitlab_url=https%3A%2F%2Fgit.streamboard.tv&style=for-the-badge)](https://git.streamboard.tv/common/simplebuild4/-/commits/master)
-[![GitLab Tag](https://img.shields.io/gitlab/v/tag/19?gitlab_url=https%3A%2F%2Fgit.streamboard.tv&style=for-the-badge)](https://git.streamboard.tv/common/simplebuild4/-/tags)
-[![GitLab License](https://img.shields.io/gitlab/license/19?gitlab_url=https%3A%2F%2Fgit.streamboard.tv&style=for-the-badge)](https://git.streamboard.tv/common/simplebuild4/-/blob/master/COPYING)
-[![Wiki](https://img.shields.io/badge/wiki-docs-informational?style=for-the-badge)](https://git.streamboard.tv/common/simplebuild4/-/wikis/home)
+[![GitLab Last Commit](https://img.shields.io/gitlab/last-commit/19?gitlab_url=https%3A%2F%2Fgit.streamboard.info&style=for-the-badge)](https://git.streamboard.info/common/simplebuild4/-/commits/master)
+[![GitLab Tag](https://img.shields.io/gitlab/v/tag/19?gitlab_url=https%3A%2F%2Fgit.streamboard.info&style=for-the-badge)](https://git.streamboard.info/common/simplebuild4/-/tags)
+[![GitLab License](https://img.shields.io/gitlab/license/19?gitlab_url=https%3A%2F%2Fgit.streamboard.info&style=for-the-badge)](https://git.streamboard.info/common/simplebuild4/-/blob/master/COPYING)
+[![Wiki](https://img.shields.io/badge/wiki-docs-informational?style=for-the-badge)](https://git.streamboard.info/common/simplebuild4/-/wikis/home)
 
 
 ## Overview
@@ -45,20 +45,20 @@ Global application settings in `data/settings.yaml`. Apply to all builds:
 
 Settings are **not stored per target** — they apply globally.
 
-*→ [Wiki: Settings](https://git.streamboard.tv/common/simplebuild4/-/wikis/core/settings)*
+*→ [Wiki: Settings](https://git.streamboard.info/common/simplebuild4/-/wikis/core/settings)*
 
 ## Repositories (F3)
 
 oscam source code management in `data/repos.yaml`:
 
 - Each repo has: **Name**, **URL** (git/svn), **Branch**, **Clone Depth**
-- Default: `https://git.streamboard.tv/common/oscam.git`
+- Default: `https://git.streamboard.info/common/oscam.git`
 - Repos are cloned to `data/repos/oscam-<name>/`
 - **Backup/Restore**: after each clone/update, a tar.gz backup is created (`data/backups/`). Before the build, the backup is extracted → guarantees a clean state.
 - Multiple repos possible (e.g. different oscam forks)
 - A target references one or more repos as "Sources"
 
-*→ [Wiki: Repositories](https://git.streamboard.tv/common/simplebuild4/-/wikis/core/repositories)*
+*→ [Wiki: Repositories](https://git.streamboard.info/common/simplebuild4/-/wikis/core/repositories)*
 
 ## Toolchains (F4)
 
@@ -86,7 +86,7 @@ Each toolchain defines:
 - Download: url, checksum, strip_components
 - Category: for UI grouping
 
-*→ [Wiki: Toolchains](https://git.streamboard.tv/common/simplebuild4/-/wikis/core/toolchains)*
+*→ [Wiki: Toolchains](https://git.streamboard.info/common/simplebuild4/-/wikis/core/toolchains)*
 
 ### Libraries
 
@@ -103,7 +103,7 @@ data/libraries.local.yaml    ← user overrides (same name replaces)
 - Download cache: `data/downloads/` — downloaded once, reused
 - Toolchain check (Check Button): shows compiler info, sysroot, headers, libraries with versions
 
-*→ [Wiki: Toolchain Libraries](https://git.streamboard.tv/common/simplebuild4/-/wikis/core/toolchains-libraries)*
+*→ [Wiki: Toolchain Libraries](https://git.streamboard.info/common/simplebuild4/-/wikis/core/toolchains-libraries)*
 
 ### Self-Build & Customize
 
@@ -125,7 +125,7 @@ exists under that name, F5 requires a double-press to confirm overwrite.
 - OE-SDK → form-based modal for BSP / machine tweaks
 - Android NDK → not customizable (NDK archive is self-contained)
 
-*→ [Wiki: Self-Build](https://git.streamboard.tv/common/simplebuild4/-/wikis/core/toolchains-self-build) · [Customize](https://git.streamboard.tv/common/simplebuild4/-/wikis/core/toolchains-customize)*
+*→ [Wiki: Self-Build](https://git.streamboard.info/common/simplebuild4/-/wikis/core/toolchains-self-build) · [Customize](https://git.streamboard.info/common/simplebuild4/-/wikis/core/toolchains-customize)*
 
 ## Targets (F2 Main Screen)
 
@@ -182,7 +182,7 @@ A target combines:
 
 The build produces: `Sources × Toolchains` binaries.
 
-*→ [Wiki: Targets](https://git.streamboard.tv/common/simplebuild4/-/wikis/core/targets) · [Build Options](https://git.streamboard.tv/common/simplebuild4/-/wikis/core/targets-build-options)*
+*→ [Wiki: Targets](https://git.streamboard.info/common/simplebuild4/-/wikis/core/targets) · [Build Options](https://git.streamboard.info/common/simplebuild4/-/wikis/core/targets-build-options)*
 
 ### Build Overrides
 
@@ -192,7 +192,7 @@ In addition to the stored target options, overrides can be provided at runtime:
 
 Format: `OPTION` enables, `OPTION_off` disables. Affects PHASE 3 (config.sh) and PHASE 4 (USE_FLAGS).
 
-*→ [Wiki: Build Overrides](https://git.streamboard.tv/common/simplebuild4/-/wikis/core/targets-overrides)*
+*→ [Wiki: Build Overrides](https://git.streamboard.info/common/simplebuild4/-/wikis/core/targets-overrides)*
 
 ### Deployment
 
@@ -209,7 +209,7 @@ auth via `sshpass` when `password` (encrypted in the YAML) is set.
 A separate `su_password` can be configured for deployments that need
 `su -c` wrapping for commands normally requiring root.
 
-*→ [Wiki: Deployment](https://git.streamboard.tv/common/simplebuild4/-/wikis/core/targets-deployment) · [Workflow: Configure Deployment](https://git.streamboard.tv/common/simplebuild4/-/wikis/workflows/configure-deployment)*
+*→ [Wiki: Deployment](https://git.streamboard.info/common/simplebuild4/-/wikis/core/targets-deployment) · [Workflow: Configure Deployment](https://git.streamboard.info/common/simplebuild4/-/wikis/workflows/configure-deployment)*
 
 ## Build Pipeline
 
@@ -238,7 +238,7 @@ PHASE 5: Deploy (per enabled deployment entry)
 - Colored output in GUI (s3-style: BUILD/LINK/STRIP/SIGN/UPX labels)
 - Logfile contains everything unfiltered
 
-*→ [Wiki: First oscam Build](https://git.streamboard.tv/common/simplebuild4/-/wikis/workflows/first-oscam-build)*
+*→ [Wiki: First oscam Build](https://git.streamboard.info/common/simplebuild4/-/wikis/workflows/first-oscam-build)*
 
 ## Services
 
@@ -262,7 +262,7 @@ the full interface from your laptop or phone on the LAN.
 - Live public URL is shown in the collapsible section title for quick
   copy-paste
 
-*→ [Wiki: Web Service](https://git.streamboard.tv/common/simplebuild4/-/wikis/extensions/web-service)*
+*→ [Wiki: Web Service](https://git.streamboard.info/common/simplebuild4/-/wikis/extensions/web-service)*
 
 ### MCP Server
 
@@ -313,7 +313,7 @@ running local service for interactive tool exploration (Web UI or CLI
 install into `$XDG_DATA_HOME/simplebuild4/node/` — no sudo, ~22 MB
 download, fully reversible with `rm -rf`.
 
-*→ [Wiki: MCP Server](https://git.streamboard.tv/common/simplebuild4/-/wikis/extensions/mcp-server) · [Clients](https://git.streamboard.tv/common/simplebuild4/-/wikis/extensions/mcp-clients) · [Security](https://git.streamboard.tv/common/simplebuild4/-/wikis/extensions/mcp-security) · [Reverse Proxy](https://git.streamboard.tv/common/simplebuild4/-/wikis/extensions/mcp-reverse-proxy) · [Inspector](https://git.streamboard.tv/common/simplebuild4/-/wikis/extensions/mcp-inspector)*
+*→ [Wiki: MCP Server](https://git.streamboard.info/common/simplebuild4/-/wikis/extensions/mcp-server) · [Clients](https://git.streamboard.info/common/simplebuild4/-/wikis/extensions/mcp-clients) · [Security](https://git.streamboard.info/common/simplebuild4/-/wikis/extensions/mcp-security) · [Reverse Proxy](https://git.streamboard.info/common/simplebuild4/-/wikis/extensions/mcp-reverse-proxy) · [Inspector](https://git.streamboard.info/common/simplebuild4/-/wikis/extensions/mcp-inspector)*
 
 ### Automation (F7)
 
@@ -329,7 +329,7 @@ job:
 Useful for nightly full-matrix rebuilds, triggered deployments, or
 keeping a CI-style workflow close to the build bench.
 
-*→ [Wiki: Automation](https://git.streamboard.tv/common/simplebuild4/-/wikis/extensions/automation) · [Workflow: Schedule Nightly Builds](https://git.streamboard.tv/common/simplebuild4/-/wikis/workflows/schedule-nightly-builds)*
+*→ [Wiki: Automation](https://git.streamboard.info/common/simplebuild4/-/wikis/extensions/automation) · [Workflow: Schedule Nightly Builds](https://git.streamboard.info/common/simplebuild4/-/wikis/workflows/schedule-nightly-builds)*
 
 ## Data Flow
 

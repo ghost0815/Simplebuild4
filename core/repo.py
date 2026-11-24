@@ -27,7 +27,7 @@ class RepoConfig:
     """A named source identity — defines where to get oscam source."""
 
     name: str = "default"
-    url: str = "https://git.streamboard.tv/common/oscam.git"
+    url: str = "https://git.streamboard.info/common/oscam.git"
     branch: str = ""           # empty = default branch
     clone_depth: int = 0       # 0 = full clone
     vcs: str = ""              # "git" | "svn" | "" (auto-detect)

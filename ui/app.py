@@ -655,7 +655,7 @@ class S4App(App):
         """
         import shutil
         import subprocess
-        url = "https://git.streamboard.tv/common/simplebuild4/wikis/home"
+        url = "https://git.streamboard.info/common/simplebuild4/wikis/home"
         candidates: list[list[str]] = []
         for opener in ("wslview", "xdg-open", "open"):
             if shutil.which(opener):
